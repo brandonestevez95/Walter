@@ -42,12 +42,21 @@ def get_geometry_stats(gdf: gpd.GeoDataFrame) -> Dict[str, Any]:
     minx, miny, maxx, maxy = gdf.total_bounds
     bbox = box(minx, miny, maxx, maxy)
     
+    # Project to Web Mercator for area calculations if in geographic CRS
+    if gdf.crs and gdf.crs.is_geographic:
+        gdf_proj = gdf.to_crs("EPSG:3857")  # Web Mercator
+        area_unit = "square meters"
+    else:
+        gdf_proj = gdf
+        area_unit = "square units"
+    
     # Calculate statistics
     stats = {
         "bbox": f"({minx:.2f}, {miny:.2f}, {maxx:.2f}, {maxy:.2f})",
-        "total_area": gdf.geometry.area.sum(),
-        "mean_area": gdf.geometry.area.mean(),
-        "bbox_area": bbox.area,
+        "total_area": gdf_proj.geometry.area.sum(),
+        "mean_area": gdf_proj.geometry.area.mean(),
+        "bbox_area": gdf_proj.geometry.total_bounds.area if hasattr(gdf_proj.geometry.total_bounds, 'area') else None,
+        "area_unit": area_unit,
     }
     
     return stats

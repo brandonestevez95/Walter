@@ -64,7 +64,10 @@ def generate_description(
     
     if include_stats:
         stats = info['geometry_stats']
-        components["statistics"] = f"The features cover an area of {stats['total_area']:.2f} square units, with a bounding box extent of {stats['bbox']}."
+        components["statistics"] = (
+            f"The features cover an area of {stats['total_area']:.2f} {stats['area_unit']}, "
+            f"with a bounding box extent of {stats['bbox']}."
+        )
     
     # Format the output
     return format_output(components, format)

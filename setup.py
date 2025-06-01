@@ -15,14 +15,26 @@ setup(
         "requests>=2.31.0",  # API calls
         "rich>=13.7.0",  # Terminal formatting
         "typer>=0.9.0",  # Modern CLI interface
-        "arcgis>=2.2.0",  # ArcGIS API for Python
         "python-dotenv>=1.0.0",  # Environment management
         "pyyaml>=6.0.1",  # YAML configuration
         "jinja2>=3.1.0",  # Template rendering
+        "streamlit>=1.32.0",  # GUI framework
+        "ollama>=0.1.6",  # Ollama Python client
+        "plotly>=5.19.0",  # Interactive plots
+        "folium>=0.15.1",  # Interactive maps
+        "streamlit-folium>=0.18.0",  # Streamlit map integration
+        "fpdf>=1.7.2",  # PDF generation
+        "openpyxl>=3.1.2",  # Excel support
+        "scipy>=1.12.0",  # Scientific computing
+        "statsmodels>=0.14.1",  # Statistical analysis
     ],
+    extras_require={
+        'agol': ["arcgis>=2.2.0"],  # ArcGIS API for Python (optional)
+    },
     entry_points={
         "console_scripts": [
             "walter=walter.cli:app",
+            "walter-gui=walter.gui:main",
         ],
     },
     author="Brandon Estevez",

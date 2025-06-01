@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "walter-gis"
+version = "0.1.0"
+authors = [
+    { name="Brandon Estevez", email="brandonestevez2007@gmail.com" },
+]
+description = "Walter - Your AI GIS Assistant for automating geospatial workflows"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: GIS",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.9",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/walter"
+"Bug Tracker" = "https://github.com/yourusername/walter/issues" 
